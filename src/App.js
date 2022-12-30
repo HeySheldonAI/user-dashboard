@@ -1,22 +1,15 @@
-import { signInWithPopup } from 'firebase/auth';
-import { auth, provider } from './config/firebaseConfig';
+import { Routes, Route } from 'react-router-dom';
+
+import LoginPage from './pages/loginPage/loginPage';
+import ErrorPage from './pages/errorPage/errorPage';
 
 function App() {
-	const handleLogin = () => {
-		signInWithPopup(auth, provider)
-			.then((result) => {
-				const user = result.user;
-				const { email, displayName } = user;
-				console.log(email, displayName);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
-
 	return (
-		<div className="App">
-			<button onClick={handleLogin}>Login</button>
+		<div className="app">
+			<Routes>
+				<Route path="/" element={<LoginPage />} />
+				<Route path="*" element={<ErrorPage />} />
+			</Routes>
 		</div>
 	);
 }
