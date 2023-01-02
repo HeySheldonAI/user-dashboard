@@ -5,7 +5,7 @@ import encrypt from '../helpers/encrypt';
 // The header is a string of the following format:
 // origin::timestamp::randomString
 const generateCustomHeader = () => {
-	const origin = 'localhost';
+	const origin = 'sheldon_user_dashboard';
 	const timestamp = new Date().getTime();
 	const randomString =
 		Math.random().toString(36).substring(2, 15) +
