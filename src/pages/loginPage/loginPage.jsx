@@ -5,10 +5,10 @@ import MainLogo from '../../assets/images/mainLogo.webp';
 import GoogleLogo from '../../assets/images/googleLogo.svg';
 import LogoutIcon from '../../assets/images/logout.svg';
 
-import { getCookie, removeCookie, setCookie } from '../../helpers/cookies';
+import { getCookie, removeCookie, setCookie } from '../../utils/cookies';
 import { getLoggedInUser } from '../../apis/auth';
 import checkExtension from '../../helpers/checkExtension';
-import constants from '../../helpers/constants';
+import constants from '../../utils/constants';
 import handleGoogleLogin from '../../helpers/handleGoogleLogin';
 import handleLogout from '../../helpers/handleLogout';
 
@@ -40,11 +40,20 @@ const LoginPage = () => {
 
 	const callLogin = () => {
 		setIsLoading(true);
+
+		// using callback to handle the response from the extension.
 		const callback = (extensionResponse) => {
 			if (extensionResponse.responseType === 'error') {
 				setIsLoading(false);
 				alert(extensionResponse.responseMessage);
-				window.location.href = constants.CHROME_EXTENSION_URL;
+
+				// ask user if they want to go to the extension page.
+				// if yes, redirect to the extension page.
+				// if no, do nothing.
+				if (window.confirm('Do you want to go to the extension page?')) {
+					window.location.href = constants.CHROME_EXTENSION_URL;
+					return;
+				}
 				return;
 			}
 
