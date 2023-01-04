@@ -9,8 +9,9 @@ Extension](https://chrome.google.com/webstore/detail/jjpcchlkabbeeghocolljenmdee
 ![Firebase](https://img.shields.io/badge/-Firebase-FFCA28?style=flat-square&logo=firebase&logoColor=black)
 ![AWS](https://img.shields.io/badge/-AWS-232f3e?style=flat-square&logo=amazonaws&logoColor=white)
 
-<!-- ## Table of Contents
+## Table of Contents
 
+<!--
 - [About Sheldon](#about-sheldon)
 - [Features](#features)
 - [Installation](#installation)
