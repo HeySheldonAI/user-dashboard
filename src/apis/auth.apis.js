@@ -1,5 +1,5 @@
-import constants from '../utils/constants';
-import generateCustomHeader from '../utils/generateCustomHeader';
+import constants from '../utils/constants.utils';
+import generateCustomHeader from '../utils/generateCustomHeader.utils';
 
 const loginUser = async (context) => {
 	try {

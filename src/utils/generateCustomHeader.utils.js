@@ -1,4 +1,4 @@
-import encrypt from '../helpers/encrypt';
+import encrypt from '../helpers/encrypt.helpers';
 
 // This function generates a custom header for the API calls
 // The header is encrypted using AES-256 encryption

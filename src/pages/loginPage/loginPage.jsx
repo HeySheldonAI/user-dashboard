@@ -5,10 +5,10 @@ import MainLogo from '../../assets/images/mainLogo.webp';
 import GoogleLogo from '../../assets/images/googleLogo.svg';
 import LogoutIcon from '../../assets/images/logout.svg';
 
-import { getCookie, removeCookie, setCookie } from '../../utils/cookies';
+import { getCookie, removeCookie, setCookie } from '../../utils/cookies.utils';
 import { getLoggedInUser } from '../../apis/auth';
 import checkExtension from '../../helpers/checkExtension';
-import constants from '../../utils/constants';
+import constants from '../../utils/constants.utils';
 import handleGoogleLogin from '../../helpers/handleGoogleLogin';
 import handleLogout from '../../helpers/handleLogout';
 
@@ -66,8 +66,8 @@ const LoginPage = () => {
 				}
 
 				const { token, isUserNew } = loginResponse.responsePayload;
-				setCookie('token', token);
-				setCookie('isUserNew', isUserNew);
+				setCookie('sheldon_user_session_token', token);
+				setCookie('sheldon_is_user_new', isUserNew);
 				setIsLoggedIn(true);
 				setIsLoading(false);
 				return;
@@ -87,10 +87,10 @@ const LoginPage = () => {
 	};
 
 	useEffect(() => {
-		const cookie = getCookie('token');
+		const cookie = getCookie('sheldon_user_session_token');
 		if (!cookie || typeof cookie !== 'string' || !cookie.trim()) {
-			removeCookie('token');
-			removeCookie('isUserNew');
+			removeCookie('sheldon_user_session_token');
+			removeCookie('sheldon_is_user_new');
 			setIsLoggedIn(false);
 			setIsLoading(false);
 			return;
@@ -99,8 +99,8 @@ const LoginPage = () => {
 		const verifyToken = async () => {
 			const backendResponse = await getLoggedInUser({ token: cookie });
 			if (backendResponse.responseType === 'error') {
-				removeCookie('token');
-				removeCookie('isUserNew');
+				removeCookie('sheldon_user_session_token');
+				removeCookie('sheldon_is_user_new');
 				setIsLoggedIn(false);
 				setIsLoading(false);
 				alert(backendResponse.responseMessage);

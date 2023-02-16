@@ -1,5 +1,5 @@
 // function to check if the chrome extsion is installed or not
-import constants from '../utils/constants';
+import constants from '../utils/constants.utils';
 
 // function to check if the chrome extsion is installed or not
 const checkExtension = (callback) => {

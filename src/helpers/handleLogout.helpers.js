@@ -1,4 +1,4 @@
-import { removeCookie } from '../utils/cookies.js';
+import { removeCookie } from '../utils/cookies.utils.js';
 
 const handleLogout = () => {
 	removeCookie('token');
